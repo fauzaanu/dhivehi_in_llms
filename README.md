@@ -7,7 +7,7 @@ openai (O1 has some hope, and GPT-4.5 speaks broken dhivehi)
 
 ### Installation
 
-`uv run sync`
+`uv sync`
 
 ### Usage
 
