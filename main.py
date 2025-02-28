@@ -113,26 +113,7 @@ if __name__ == '__main__':
 
 
     SUMMARY_TEXT = """
-    In the realm of astronautical propulsion systems, the amalgamation of hypergolic bipropellants and 
-    cryogenic oxidizer-fuel combinations constitutes the foundational paradigm of contemporary rocketry. 
-    The intrinsic efficacy of such propulsion methodologies is inexorably linked to the specific impulse 
-    parameter—a quantification of propellant efficiency expressed as thrust per unit mass flow rate. 
-    Multistage launch vehicles leverage the Tsiolkovsky rocket equation to mitigate the exponential mass ratio 
-    requirements inherent in achieving orbital velocities, whilst simultaneously contending with atmospheric 
-    drag coefficients and gravitational potential energy gradients. The thermodynamic exigencies of combustion
-     chambers necessitate regenerative cooling circuits wherein cryogenic propellants circumnavigate the combustion 
-     periphery prior to injection, thereby establishing a thermal equilibrium conducive to structural integrity maintenance. 
-     Turbopump assemblies, driven by gas generator or staged combustion cycles, facilitate the requisite pressure
-      differentials for propellant delivery, often achieving rotational velocities in excess of 30,000 RPM under
-      extraordinary thermal gradients. Nozzle geometry optimization, predicated upon the principles of compressible 
-      fluid dynamics, endeavors to maximize thrust coefficients through expansion ratio configurations appropriate 
-      to ambient pressure profiles encountered during ascent trajectories. Attitude control systems, comprising 
-      gimbaled thrust vectoring mechanisms or auxiliary reaction control thrusters, maintain vehicle stability 
-      against aerodynamic perturbations and center-of-mass displacements. The metallurgical challenges of rocket 
-      engineering demand superalloys exhibiting exceptional strength-to-weight ratios and thermal resistance, often
-       incorporating refractory elements such as niobium, tantalum, and molybdenum. Contemporary advancements in 
-       computational fluid dynamics enable unprecedented fidelity in modeling combustion instabilities, particularly
-       the pernicious transverse and longitudinal acoustic modes that can induce catastrophic structural resonance.
+    At Xiao Ye, Lin has struggled with similar logistics, in addition to price. Although selling burgers brings in new guests, the amount of money each guest spends on burger night is significantly lower than a regular service. That means the restaurant needs to feed many more guests in a night to make the same amount of money, which changes the flow of service as they work to turn tables.
     """
 
     prompt = f"Read the following text and tell me what you understood: {SUMMARY_TEXT}"
