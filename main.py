@@ -7,8 +7,11 @@ from ask import ask_llm
 
 from pydantic import BaseModel
 
+from constants import GOOGLE_MODELS, ANTHROPIC_MODELS
+from helpers import generate_models_to_test
 
-def benchmark_models(prompt, system_prompt, response_model, output_file='benchmark_results.txt'):
+
+def benchmark_models(prompt, system_prompt, response_model, models: list, output_file='benchmark_results.txt', ):
     """
     Benchmark different models with a single prompt and flexible response model support.
 
@@ -17,29 +20,6 @@ def benchmark_models(prompt, system_prompt, response_model, output_file='benchma
         response_model: The Pydantic model to use for structured responses
         output_file: The file to write benchmark results to
     """
-    models_to_test = [
-        {
-            'name': 'claude-3-5-sonnet-20241022',
-            'func': ask_llm,
-            'system_prompt': system_prompt,
-        },
-        {
-            'name': 'claude-3-7-sonnet-20250219',
-            'func': ask_llm,
-            'system_prompt': system_prompt,
-        },
-        {
-            'name': 'claude-3-5-haiku-20241022',
-            'func': ask_llm,
-            'system_prompt': system_prompt,
-        },
-        {
-            'name': 'claude-3-haiku-20240307',
-            'func': ask_llm,
-            'system_prompt': system_prompt,
-        },
-    ]
-
     # Initialize the output file
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write("Benchmark Results\n")
@@ -48,7 +28,7 @@ def benchmark_models(prompt, system_prompt, response_model, output_file='benchma
 
     print(f"-----\nPrompt: {prompt}\n")
 
-    for model_info in models_to_test:
+    for model_info in generate_models_to_test(models, ask_llm, system_prompt):
         model_name = model_info['name']
         request_func = model_info['func']
         system_prompt = model_info['system_prompt']
@@ -119,4 +99,5 @@ if __name__ == '__main__':
     prompt = f"Read the following text and tell me what you understood: {SUMMARY_TEXT}"
     system_prompt = "KEEP YOUR RESPONSE SHORT AND TO THE POINT AND IN DHIVEHI"
     benchmark_models(prompt=prompt, system_prompt=system_prompt, response_model=CuriousityRover,
+                     models=GOOGLE_MODELS + ANTHROPIC_MODELS,
                      output_file='dhivehi_results.txt')
