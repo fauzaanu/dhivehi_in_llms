@@ -6,10 +6,6 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 
 
-
-
-
-
 def ask_llm(system_prompt, prompt, model, max_tokens, resp_model):
     load_dotenv()
 
@@ -23,6 +19,21 @@ def ask_llm(system_prompt, prompt, model, max_tokens, resp_model):
             ),
             mode=instructor.Mode.GEMINI_JSON,
         )
+
+        resp = client.messages.create(
+            messages=[
+                {
+                    "role": "system",
+                    "content": system_prompt,
+                },
+                {
+                    "role": "user",
+                    "content": prompt,
+                }
+            ],
+            response_model=resp_model
+        )
+        return resp
     else:
         # Otherwise default to Anthropic
         client = instructor.from_anthropic(
@@ -31,19 +42,19 @@ def ask_llm(system_prompt, prompt, model, max_tokens, resp_model):
             )
         )
 
-    resp = client.messages.create(
-        model=model,
-        max_tokens=max_tokens,
-        messages=[
-            {
-                "role": "system",
-                "content": system_prompt,
-            },
-            {
-                "role": "user",
-                "content": prompt,
-            }
-        ],
-        response_model=resp_model,
-    )
-    return resp
+        resp = client.messages.create(
+            model=model,
+            max_tokens=max_tokens,
+            messages=[
+                {
+                    "role": "system",
+                    "content": system_prompt,
+                },
+                {
+                    "role": "user",
+                    "content": prompt,
+                }
+            ],
+            response_model=resp_model,
+        )
+        return resp

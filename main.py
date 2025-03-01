@@ -96,8 +96,8 @@ if __name__ == '__main__':
     At Xiao Ye, Lin has struggled with similar logistics, in addition to price. Although selling burgers brings in new guests, the amount of money each guest spends on burger night is significantly lower than a regular service. That means the restaurant needs to feed many more guests in a night to make the same amount of money, which changes the flow of service as they work to turn tables.
     """
 
-    prompt = f"Read the following text and tell me what you understood: {SUMMARY_TEXT}"
-    system_prompt = "KEEP YOUR RESPONSE SHORT AND TO THE POINT AND IN DHIVEHI"
+    prompt = f"Read the following text and tell me what you understood in dhivehi: {SUMMARY_TEXT}"
+    system_prompt = "YOU WILL ONLY RESPOND IN DHIVEHI. (ތާނަ / ދިވެހިބަސް). YOU WILL NOT RESPOND IN ENGLISH. YOU WILL KEEP EVERYTHING SHORT."
     benchmark_models(prompt=prompt, system_prompt=system_prompt, response_model=CuriousityRover,
                      models=GOOGLE_MODELS + ANTHROPIC_MODELS,
                      output_file='dhivehi_results.txt')
