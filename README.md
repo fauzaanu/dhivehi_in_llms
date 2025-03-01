@@ -2,12 +2,13 @@
 
 Simple performance comparison script to compare the performance of different LLMs for Dhivehi.
 
-Currently, all relevant models from anthropic are added, Next step would be to add the models from Google, and finally
-openai (O1 has some hope, and GPT-4.5 speaks broken dhivehi)
+Currently, all relevant models from anthropic and google are added. We should add all the other models instructor has
+support for to see a more comprehensive comparison.
 
 ### Installation
-
-`uv sync`
+1. Clone the repository
+2. Make sure you have uv [installed](https://docs.astral.sh/uv/getting-started/installation/)
+3. Run `uv sync --frozen --no-dev`
 
 ### Usage
 
