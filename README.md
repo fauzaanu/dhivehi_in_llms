@@ -17,9 +17,9 @@ openai (O1 has some hope, and GPT-4.5 speaks broken dhivehi)
 
 ```python
 class CuriousityRover(BaseModel):
-  tags: List[str]
-  understood_facts: List[str]
-  questions_i_have: List[str]
+    tags: List[str]
+    understood_facts: List[str]
+    questions_i_have: List[str]
 
 
 SUMMARY_TEXT = """
@@ -33,8 +33,9 @@ That means the restaurant needs to feed many more guests in a night to make
 prompt = f"Read the following text and tell me what you understood: {SUMMARY_TEXT}"
 system_prompt = "KEEP YOUR RESPONSE SHORT AND TO THE POINT AND IN DHIVEHI"
 benchmark_models(prompt=prompt, system_prompt=system_prompt, response_model=CuriousityRover,
-               output_file='dhivehi_results.txt')
+                 output_file='dhivehi_results.txt')
 ```
+
 ### Output
 
 ```text
@@ -116,3 +117,12 @@ Response:
 
 =====
 ```
+
+### AI Benchmark
+
+`evaluate.py` can process an output file and run a benchmark rating each model for 20 different metrics. (readability,
+coherence, grammer, etc). At the end of this "evaluation",
+we also process a little graph to show the average performance of each model. You can use any model to run these
+evaluations but it would be common sense to use the best models for this task.
+(sonnet-3.7 / gemini-1.5-pro-002)
+
