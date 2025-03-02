@@ -4,6 +4,7 @@ import instructor
 from anthropic import Anthropic
 import google.generativeai as genai
 from dotenv import load_dotenv
+from openai import OpenAI
 
 
 def ask_llm(system_prompt, prompt, model, max_tokens, resp_model):
@@ -34,6 +35,31 @@ def ask_llm(system_prompt, prompt, model, max_tokens, resp_model):
             response_model=resp_model
         )
         return resp
+    elif "deepseek" in model.lower():
+        #    OpenAI(api_key=os.getenv("DEEPSEEK_API_KEY"), base_url="https://api.deepseek.com")
+        # Use the Deepseek client
+        client = instructor.from_openai(
+            OpenAI(
+                api_key=os.getenv("DEEPSEEK_API_KEY"),
+                base_url="https://api.deepseek.com",
+            ),
+            mode=instructor.Mode.MD_JSON if "reasoner" in model.lower() else instructor.Mode.TOOLS
+        )
+
+        # Create structured output
+        resp = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": prompt}
+            ],
+            response_model=resp_model,
+        )
+        return resp
+
+
+
+
     else:
         # Otherwise default to Anthropic
         client = instructor.from_anthropic(

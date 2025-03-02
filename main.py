@@ -7,7 +7,7 @@ from ask import ask_llm
 
 from pydantic import BaseModel
 
-from constants import GOOGLE_MODELS, ANTHROPIC_MODELS
+from constants import GOOGLE_MODELS, ANTHROPIC_MODELS, DEEPSEEK_MODELS
 from helpers import generate_models_to_test
 
 
@@ -99,5 +99,5 @@ if __name__ == '__main__':
     prompt = f"Read the following text and tell me what you understood in dhivehi: {SUMMARY_TEXT}"
     system_prompt = "YOU WILL ONLY RESPOND IN DHIVEHI. (ތާނަ / ދިވެހިބަސް). YOU WILL NOT RESPOND IN ENGLISH. YOU WILL KEEP EVERYTHING SHORT."
     benchmark_models(prompt=prompt, system_prompt=system_prompt, response_model=CuriousityRover,
-                     models=GOOGLE_MODELS + ANTHROPIC_MODELS,
-                     output_file='dhivehi_results.txt')
+                     models=DEEPSEEK_MODELS,
+                     output_file='dhivehi_deepseek_results.txt')
